@@ -1,0 +1,1 @@
+orion.config.add('APP_PASSWORD', 'security');

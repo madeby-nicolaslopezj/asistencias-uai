@@ -7,7 +7,12 @@
 meteor-platform
 orionjs:core
 orionjs:bootstrap
+orionjs:relationships
 twbs:bootstrap
 fortawesome:fontawesome
+accounts-password
+less
+reywood:publish-composite
+dburles:collection-helpers
+momentjs:moment
 iron:router
-orionjs:relationships

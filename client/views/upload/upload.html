@@ -1,26 +1,22 @@
 <template name="upload">
-	<div class="text-center">
-		<br><br>
-		<h3>Upload the xlsx</h3>
-		<br><br>
-		{{# if showFileInput }}
-		<div class="clearfix">
-			<span class="btn btn-primary btn-file">
-				Select File <input type="file" class="filebag">
-			</span>
-		</div>
-		{{ else }}
-		<div class="row">
-			<div class="col-sm-6 col-sm-offset-3">
-				<div class="clearfix progress-bar-container">
-					<div class="progress">
-						<div class="progress-bar progress-bar-striped active" style="width: 100%">
-						</div>
+	{{# Layout template="simpleThemeSmallContentOffset" }}
+    {{# Layout template="simpleThemeTitle" }}
+      Upload the xlsx
+    {{/ Layout }}
+
+    {{# Layout template="simpleThemeContentContainer" }}
+      {{# if showFileInput }}
+  			<div class="clearfix">
+  				<span class="btn btn-primary btn-file">
+  					Select File <input type="file" class="filebag">
+  				</span>
+  			</div>
+			{{ else }}
+				<div class="progress">
+					<div class="progress-bar progress-bar-striped active" style="width: 100%">
 					</div>
 				</div>
-			</div>
-		</div>
-		{{/ if }}
-		<br><br><br><br>
-	</div>
+			{{/ if }}
+    {{/ Layout }}
+  {{/ Layout }}
 </template>

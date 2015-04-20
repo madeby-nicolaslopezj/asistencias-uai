@@ -1,0 +1,20 @@
+<template name="coursesIndex">
+  <div class="index">
+    <div class="courses">
+      {{# each courses }}
+        <div class="course">
+          <p class="name">{{ name }}</p>
+          <p class="teacher">{{ teacher }}</p>
+          <p class="labels">
+            <span class="abbreviation label label-danger">{{ abbreviation }}</span>
+            <span class="section label label-primary">Sección {{ section }}</span>
+          </p>
+        </div>
+      {{/ each }}
+    </div>
+    <br>
+    <p class="text-center">
+      <a class="ios-link link-ios-default btn-logout">Desconectarse</a>
+    </p>
+  </div>
+</template>

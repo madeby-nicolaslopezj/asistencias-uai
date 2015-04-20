@@ -28,7 +28,7 @@ Template.upload.events({
 						console.log(error);
 						alert(error.reason);
 					} else {
-						Router.go('adminEntitiesIndex', { entity: 'courses' });
+						Router.go('collections.courses.index');
 					}
 				});
 				

@@ -1,0 +1,40 @@
+<template name="layout">
+  <div class="app">
+    <div class="header">
+      <h1>Asistencias</h1>
+    </div>
+    <div class="content">
+      {{# if currentUser }}
+        {{> yield }}
+      {{ else }}
+        {{> login }}
+      {{/ if }}
+    </div>
+  </div>
+</template>
+
+<template name="login">
+  <br>
+  <form>
+    {{# if currentError }}
+      <div class="alert alert-danger">
+        <p>{{ currentError }}</p>
+      </div>
+    {{/ if }}
+    <p class="text-center">
+      Escribe la contraseña
+    </p>
+    <div class="form-group">
+      <input type="password" class="form-control ios-input input-lg" placeholder="Contraseña">
+    </div>
+    <div class="form-group text-center">
+      <a class="ios-link link-ios-default">
+        {{# if isLoading }}
+          Conectando...
+        {{ else }}
+          Entrar
+        {{/if}}
+      </a>
+    </div>
+  </form>
+</template>

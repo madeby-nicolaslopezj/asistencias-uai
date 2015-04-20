@@ -1,0 +1,65 @@
+@primary: #FF1300;
+@default: lighten(#000, 20%);
+
+.label {
+  border: 0;
+}
+
+.alert {
+  border: 0;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+
+  &.alert-danger {
+    background: #d9534f;
+    color: #fff;
+  }
+}
+
+.ios-link {
+  width: 100%;
+  margin: 15px;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+  }
+}
+
+&.link-ios-primary {
+  color: @primary;
+
+  &:hover, &:focus {
+    color: @primary;
+  }
+
+  &:active {
+    color: darken(@primary, 15%);
+  }
+}
+
+&.link-ios-default {
+  color: @default;
+
+  &:hover, &:focus {
+    color: @default;
+  }
+
+  &:active {
+    color: darken(@default, 15%);
+  }
+}
+
+.ios-input {
+  -webkit-appearance: none;
+  text-align: center;
+  border: 1px solid darken(#fff, 10%);
+
+  &, &:focus, &:hover, &:active {
+    box-shadow: none;
+  }
+}

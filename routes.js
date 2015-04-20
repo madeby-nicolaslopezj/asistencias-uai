@@ -1,13 +1,11 @@
-Router.route('/admin/upload-data', {
-	name: 'upload',
-	controller: orion.RouteController,  
-	onBeforeAction: orion.users.ensureRoutePermissions('entity.courses')
-});
+Router.map(function() {
+  this.route('courses.index', {
+    path: '/',
+    layoutTemplate: 'layout'
+  });
 
-orion.admin.addSidebarTab({
-    routeName: 'upload',
-    navbarTitle: 'Upload',
-    activeRouteRegex: 'upload',
-    icon: 'upload',
-    permission: 'entity.courses'
+  this.route('courses.show', {
+    path: '/course/:_id',
+    layoutTemplate: 'layout'
+  });
 });
