@@ -8,4 +8,9 @@ Router.map(function() {
     path: '/course/:_id',
     layoutTemplate: 'layout'
   });
+
+  this.route('collections.students.asistance', {
+    path: '/asistance/:_id',
+    layoutTemplate: ReactiveTemplates.get('layout')
+  });
 });

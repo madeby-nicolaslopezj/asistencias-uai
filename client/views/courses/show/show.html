@@ -1,28 +1,29 @@
 <template name="coursesShow">
-  <div class="show">
-    <div class="description">
-      <h3>{{ course.name }}</h3>
-      <p class="teacher">{{ course.teacher }}</p>
-      <p class="text-muted module">Módulo {{ currentModule }}</p>
-      {{# if course.getCurrentSession.students }}
-        <p>{{ course.getCurrentSession.students.length }} alumnos han marcado asistencia</p>
-      {{/ if }}
+  <br>
+  <div class="show container">
+    <div class="card blue darken-1">
+      <div class="card-content white-text">
+        <span class="card-title">{{ course.name }}</span>
+        <p class="description">
+          {{ course.teacher }}<br>
+          Módulo {{ currentModule }}<br>
+          <span class="badge red white-text left">{{ course.abbreviation }}</span>
+        </p>
+        {{# if course.getCurrentSession.students }}
+          <p>{{ course.getCurrentSession.students.length }} alumnos han marcado asistencia</p>
+        {{/ if }}
+      </div>
     </div>
-    <hr>
-
+    <br>
     {{# if course.getCurrentSession }}
       <div class="session">
         {{> coursesShowSession course=course }}
       </div>
     {{ else }}
-      <div class="create-session text-center">
-        <p><a class="ios-link link-ios-primary start-session">Empezar Nueva Sesión</a></p>
+      <div class="create-session center">
+        <p><a class="btn start-session">Empezar Nueva Sesión</a></p>
       </div>
     {{/ if }}
-
-    <p class="text-center">
-      <a class="ios-link link-ios-default" href="{{ pathFor 'courses.index' }}">Volver</a>
-    </p>
   </div>
 </template>
 
@@ -30,16 +31,15 @@
 <template name="coursesShowSession">
   <div class="add-student">
     <form>
-      {{# if currentError }}
-        <div class="alert alert-danger">
-          <p>{{ currentError }}</p>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="mdi-action-account-circle prefix"></i>
+          <input id="rut" type="number" pattern="\d*" class="form-control input-lg ios-input">
+          <label for="rut">RUT sin digito verificador</label>
         </div>
-      {{/ if }}
-      <div class="form-group">
-        <input type="number" pattern="\d*" class="form-control input-lg ios-input" placeholder="RUT sin digito verificador">
       </div>
-      <div class="form-group text-center">
-        <a class="ios-link link-ios-primary">Marcar Asistencia</a>
+      <div class="row center">
+        <a class="btn">Marcar Asistencia</a>
       </div>
     </form>
   </div>

@@ -8,3 +8,11 @@ Meteor.publish('everything', function () {
     Sessions.find({ date: moment().format("DD-MM-YYYY") })
   ];
 });
+
+Meteor.publish('student', function(studentId) {
+  check(studentId, String);
+  if (!Roles.userHasPermission(this.userId, 'collection.students.update')) {
+    return [];
+  }
+  return Students.find(studentId);
+})

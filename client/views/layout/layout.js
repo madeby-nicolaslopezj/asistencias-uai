@@ -12,7 +12,6 @@ Template.login.helpers({
 });
 
 Template.login.onRendered(function() {
-  Session.set('currentError', null);
   Session.set('isLoading', false);
 })
 
@@ -23,20 +22,19 @@ Template.login.events({
       return;
     }
 
-    Session.set('currentError', null);
     var password = template.$('input').val();
 
     if (!password) {
-      Session.set('currentError', 'Escribe la contraseña');
+      Materialize.toast('Escribe la contraseña', 4000)
       return false;
     }
 
     Session.set('isLoading', true);
     Meteor.loginWithApp(password, function(error) {
       if (error && error.error == 403) {
-        Session.set('currentError', 'Contraseña incorrecta');
+        Materialize.toast('Contraseña incorrecta', 4000)
       } else if (error) {
-        Session.set('currentError', 'Error desconocido');
+        Materialize.toast('Contraseña incorrecta', 4000)
       }
       Session.set('isLoading', false);
     })

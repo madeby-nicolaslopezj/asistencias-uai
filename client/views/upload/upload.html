@@ -1,22 +1,16 @@
 <template name="upload">
-	{{# Layout template="orionBootstrapSmallContentOffset" }}
-    {{# Layout template="orionBootstrapTitle" }}
-      Upload the xlsx
+  {{# Layout template="orionMaterializeContentContainer" }}
+    {{# Layout template="orionMaterializeHeaderContainer" }}
+      Upload the .xlsx file
     {{/ Layout }}
-
-    {{# Layout template="orionBootstrapContentContainer" }}
-      {{# if showFileInput }}
-  			<div class="clearfix">
-  				<span class="btn btn-primary btn-file">
-  					Select File <input type="file" class="filebag">
-  				</span>
-  			</div>
-			{{ else }}
-				<div class="progress">
-					<div class="progress-bar progress-bar-striped active" style="width: 100%">
-					</div>
-				</div>
-			{{/ if }}
-    {{/ Layout }}
+    {{# if showFileInput }}
+      <div class="clearfix">
+        <span class="btn btn-file">
+          Select File <input type="file" class="filebag">
+        </span>
+      </div>
+    {{ else }}
+      {{> loading }}
+    {{/ if }}
   {{/ Layout }}
 </template>

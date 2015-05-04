@@ -1,3 +1,7 @@
+Template.coursesShow.onRendered(function() {
+  $('.show').fadeIn();
+})
+
 Template.coursesShow.helpers({
   course: function () {
     var id = Router.current().params._id;
@@ -14,36 +18,28 @@ Template.coursesShow.events({
   }
 });
 
-Template.coursesShowSession.onRendered(function() {
-  Session.set('currentError', null);
-})
-
 Template.coursesShowSession.helpers({
   session: function () {
     return this.course.getCurrentSession();
-  },
-  currentError: function() {
-    return Session.get('currentError');
   }
 });
 
 Template.coursesShowSession.events({
   'submit form, click a': function (event, template) {
-    Session.set('currentError', null);
     var course = this.course;
     var session = course.getCurrentSession();
     var rut = template.$('input').val();
     var student = Students.findOne({ rut: rut });
     if (!student) {
-      Session.set('currentError', 'Rut incorrecto');
+      Materialize.toast('Rut incorrecto', 4000)
       return false;
     }
     if (!_.contains(course.students, student._id)) {
-      Session.set('currentError', 'Rut incorrecto');
+      Materialize.toast('Rut incorrecto', 4000)
       return false;
     }
     if (_.contains(session.students, student._id)) {
-      Session.set('currentError', 'Ya marcaste asistencia');
+      Materialize.toast('Ya marcaste asistencia', 4000)
       template.$('input').val('');
       return false;
     }

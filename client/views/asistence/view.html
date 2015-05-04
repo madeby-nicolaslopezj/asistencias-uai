@@ -1,0 +1,29 @@
+<template name="collectionsStudentsAsistance">
+  {{# Layout template="orionMaterializeContentContainer" }}
+    {{# Layout template="orionMaterializeHeaderContainer" }}
+      Asistencia
+    {{/ Layout }}
+    {{# with student }}
+      <p><b>{{ name }}</b></p>
+      <p>{{ rut }}-{{ digit }}</p>
+      <br>
+
+      {{# if result }}
+        {{# each result }}
+          <p><b>{{ abbreviation }}:</b> {{ name }}</p>
+          <p>Sección {{ section }} - {{ teacher }}</p>
+          <p>Asistió a {{ asisted }} de {{ totalSessions }} clases - {{ percentage }}%</p>
+          <div class="progress">
+            <div class="determinate" style="width: {{ percentage }}%"></div>
+          </div>
+          <br>
+        {{/ each }}
+      {{ else }}
+        {{> loading }}
+      {{/ if }}
+    {{/ with }}
+  {{/ Layout }}
+  {{# Layout template="orionMaterializeButtonsContainer" }}
+    <a href="{{ pathFor 'collections.students.index' }}">Volver</a>
+  {{/ Layout }}
+</template>

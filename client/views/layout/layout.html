@@ -1,19 +1,49 @@
 <template name="layout">
-  <div class="app">
-    <div class="header">
-      <h1>Asistencias</h1>
-    </div>
-    <div class="content">
-      {{# if currentUser }}
-        {{> yield }}
-      {{ else }}
-        {{> login }}
-      {{/ if }}
-    </div>
+  <div class="navbar-fixed">
+    <nav class="black">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Asistencias</a>
+        {{# if isActiveRoute regex='courses.show' }}
+          <ul class="left">
+            <li><a href="{{ pathFor 'courses.index' }}"><i class="mdi-navigation-chevron-left"></i></a></li>
+          </ul>
+        {{/ if }}
+      </div>
+    </nav>
+  </div>
+  <div class="content">
+    {{# if currentUser }}
+      {{> yield }}
+    {{ else }}
+      {{> login }}
+    {{/ if }}
   </div>
 </template>
 
 <template name="login">
+  <div class="container">
+    <br>
+    <form>
+      <div class="row">
+        <div class="input-field">
+          <input id="password" type="password" class="validate">
+          <label for="password">Contraseña</label>
+        </div>
+      </div>
+      <div class="row">
+        <a class="btn">
+          {{# if isLoading }}
+            Conectando...
+          {{ else }}
+            Entrar
+          {{/if}}
+        </a>
+      </div>
+    </form>
+  </div>
+</template>
+
+<template name="logins">
   <br>
   <form>
     {{# if currentError }}
@@ -28,13 +58,24 @@
       <input type="password" class="form-control ios-input input-lg" placeholder="Contraseña">
     </div>
     <div class="form-group text-center">
-      <a class="ios-link link-ios-default">
-        {{# if isLoading }}
-          Conectando...
-        {{ else }}
-          Entrar
-        {{/if}}
-      </a>
+      
     </div>
   </form>
+</template>
+
+<template name="loading">
+  <br>
+  <div class="center">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

@@ -1,20 +1,21 @@
 <template name="coursesIndex">
   <div class="index">
-    <div class="courses">
+    <ul class="collection">
       {{# each courses }}
-        <div class="course">
-          <p class="name">{{ name }}</p>
-          <p class="teacher">{{ teacher }}</p>
-          <p class="labels">
-            <span class="abbreviation label label-danger">{{ abbreviation }}</span>
-            <span class="section label label-primary">Sección {{ section }}</span>
+        <li class="collection-item course">
+          <p class="title">
+            <b>{{ name }}</b><br>
+            <span class="grey-text text-darken-1">{{ teacher }} Sección {{ section }} </span>
+            <br>
+            <span class="badge red white-text left">{{ abbreviation }}</span>
           </p>
-        </div>
+        </li>
       {{/ each }}
+    </ul>
+    <br>
+    <div class="container center">
+      <a class="btn-flat red-text waves-effect btn-logout">Desconectarse</a>
     </div>
     <br>
-    <p class="text-center">
-      <a class="ios-link link-ios-default btn-logout">Desconectarse</a>
-    </p>
   </div>
 </template>
