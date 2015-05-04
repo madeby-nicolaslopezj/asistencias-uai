@@ -1,22 +1,24 @@
 <template name="layout">
-  <div class="navbar-fixed">
-    <nav class="black">
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo center">Asistencias</a>
-        {{# if isActiveRoute regex='courses.show' }}
-          <ul class="left">
-            <li><a href="{{ pathFor 'courses.index' }}"><i class="mdi-navigation-chevron-left"></i></a></li>
-          </ul>
-        {{/ if }}
-      </div>
-    </nav>
-  </div>
-  <div class="content">
-    {{# if currentUser }}
-      {{> yield }}
-    {{ else }}
-      {{> login }}
-    {{/ if }}
+  <div class="app">
+    <div class="navbar-fixed">
+      <nav class="black">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo center">Asistencias</a>
+          {{# if isActiveRoute regex='courses.show' }}
+            <ul class="left">
+              <li><a href="{{ pathFor 'courses.index' }}"><i class="mdi-navigation-chevron-left"></i></a></li>
+            </ul>
+          {{/ if }}
+        </div>
+      </nav>
+    </div>
+    <div class="content">
+      {{# if currentUser }}
+        {{> yield }}
+      {{ else }}
+        {{> login }}
+      {{/ if }}
+    </div>
   </div>
 </template>
 
