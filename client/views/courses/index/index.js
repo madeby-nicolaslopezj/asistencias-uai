@@ -1,9 +1,3 @@
-Template.coursesIndex.onRendered(function() {
-  Meteor.setTimeout(function () {
-    Materialize.showStaggeredList('.collection')
-  }, 100);
-})
-
 Template.coursesIndex.helpers({
   courses: function () {
     return Courses.find();

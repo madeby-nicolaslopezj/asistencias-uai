@@ -13,7 +13,7 @@
       {{# each result.asistance }}
         <p><b>{{ rut }}-{{ digit }}</b></p>
         <p>{{ name }}</p>
-        <p>Asistió a {{ asisted }} de {{ ../totalSessions }} clases - {{ percentage }}%</p>
+        <p>Asistió a {{ asisted }} de {{ result.totalSessions }} clases - {{ percentage }}%</p>
         <div class="progress">
           <div class="determinate" style="width: {{ percentage }}%"></div>
         </div>
