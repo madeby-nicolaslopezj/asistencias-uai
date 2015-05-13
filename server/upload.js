@@ -20,6 +20,8 @@ Meteor.methods({
 
     check(items, [{
       CodigoOmega: String,
+      PeriodoAcademicoId: String,
+      NombrePeriodoAcademico: String,
       ExpedienteId: String,
       Rut: String,
       DigitoVerificador: String,
