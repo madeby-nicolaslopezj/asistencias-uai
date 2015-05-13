@@ -66,6 +66,8 @@ Meteor.methods({
           abbreviation: item['Sigla Asignatura'],
           teacher: item.Profesor,
           numberOfStudents: item.InscritosVigentes,
+          periodId: item.PeriodoAcademicoId,
+          periodName: item.NombrePeriodoAcademico
         },
         $addToSet: {
           students: studentId

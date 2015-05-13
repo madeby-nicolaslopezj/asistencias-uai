@@ -18,6 +18,12 @@ Courses.attachSchema(new SimpleSchema({
   numberOfStudents: {
     type: String,
   },
+  periodId: {
+    type: String
+  },
+  periodName: {
+    type: String
+  },
   students: orion.attribute('hasMany', {
     label: 'Students',
     optional: true
