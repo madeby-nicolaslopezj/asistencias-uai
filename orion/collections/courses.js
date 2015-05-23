@@ -31,7 +31,11 @@ Courses.attachSchema(new SimpleSchema({
     collection: Students,
     titleField: 'name',
     publicationName: 'asdfasdfasdf',
-  })
+  }),
+  hidden: {
+    type: Boolean,
+    optional: true
+  }
 }));
 
 Courses.helpers({

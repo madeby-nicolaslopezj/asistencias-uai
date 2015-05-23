@@ -3,7 +3,7 @@ Meteor.publish('everything', function () {
     return [];
   }
   return [
-    Courses.find({}),
+    Courses.find({ hidden: { $ne: true } }),
     Students.find({}),
     Sessions.find({ date: moment().format("DD-MM-YYYY") })
   ];

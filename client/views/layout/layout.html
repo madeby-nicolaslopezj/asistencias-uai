@@ -13,7 +13,7 @@
       </nav>
     </div>
     <div class="content">
-      {{# if isConnected }}
+      {{# if Template.subscriptionsReady }}
         {{# if currentUser }}
           {{> yield }}
         {{ else }}

@@ -1,6 +1,6 @@
 Template.coursesIndex.helpers({
   courses: function () {
-    return Courses.find();
+    return Courses.find({ hidden: { $ne: true } }, { sort: { name: 1 } });
   }
 });
 
