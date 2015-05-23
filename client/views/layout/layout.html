@@ -13,10 +13,14 @@
       </nav>
     </div>
     <div class="content">
-      {{# if currentUser }}
-        {{> yield }}
+      {{# if isConnected }}
+        {{# if currentUser }}
+          {{> yield }}
+        {{ else }}
+          {{> login }}
+        {{/ if }}
       {{ else }}
-        {{> login }}
+        {{> loading }}
       {{/ if }}
     </div>
   </div>

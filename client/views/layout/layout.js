@@ -2,6 +2,12 @@ Template.layout.onRendered(function() {
   this.subscribe('everything');
 })
 
+Template.layout.helpers({
+  isConnected: function () {
+    return Meteor.connection.status().status == 'connected';
+  }
+});
+
 Template.login.helpers({
   currentError: function() {
     return Session.get('currentError');
