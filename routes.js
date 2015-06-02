@@ -1,6 +1,6 @@
 Router.map(function() {
   
-  if (Meteor.isCordova) {
+  if (Meteor.isCordova || true) {
     this.route('courses.index', {
       path: '/',
       layoutTemplate: 'layout'
