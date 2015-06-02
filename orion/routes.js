@@ -3,11 +3,13 @@ Router.route('/admin/upload', function () {
   this.render('upload');
 }, { name: 'upload' });
 
-orion.addLink({
-  section: 'top',
-  title: 'Upload Data',
-  routeName: 'upload',
-  activeRouteRegex: 'upload',
-});
+if (Meteor.isClient) {
+  orion.addLink({
+    section: 'top',
+    title: 'Upload Data',
+    routeName: 'upload',
+    activeRouteRegex: 'upload',
+  });
 
-orion.accounts.addProtectedRoute('upload');
+  orion.accounts.addProtectedRoute('upload');
+}
