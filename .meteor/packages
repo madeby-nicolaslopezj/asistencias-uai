@@ -16,4 +16,4 @@ dburles:collection-helpers
 momentjs:moment
 iron:router
 mobile-status-bar
-mdg:reload-on-resume
+msavin:mongol

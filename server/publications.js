@@ -1,4 +1,4 @@
-Meteor.publish('everything', function () {
+Meteor.publish('everything', function() {
   if (!Roles.userHasPermission(this.userId, 'app.subscribe')) {
     return [];
   }
@@ -9,7 +9,7 @@ Meteor.publish('everything', function () {
   ];
 });
 
-Meteor.publish('course', function (courseId) {
+Meteor.publish('course', function(courseId) {
   check(courseId, String);
   if (!Roles.userHasPermission(this.userId, 'collection.courses.update')) {
     return [];

@@ -26,11 +26,16 @@ Sessions.attachSchema(new SimpleSchema({
     collection: Students,
     titleField: 'name',
     publicationName: 'asdfasasddfasdf',
-  })
+  }),
+  createdBy: orion.attribute('createdBy')
 }));
 
 Sessions.deny({
   insert: function (userId, doc) {
-    return Sessions.find(doc).count() != 0;
+    return Sessions.find({
+      date: doc.date,
+      module: doc.module,
+      course: doc.course
+    }).count() != 0;
   }
 });
