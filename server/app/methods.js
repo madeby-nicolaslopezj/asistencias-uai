@@ -34,6 +34,20 @@ Meteor.methods({
       throw new Meteor.Error('repeated', 'Ya marcó asistencia');
     }
 
-    Sessions.update(session._id, { $addToSet: { students: student._id } })
+    //Sessions.update(session._id, { $addToSet: { students: student._id } })
+  },
+  updateCurrentSessions: function() {
+    Courses.find({ hidden: { $ne: true } }).forEach(function (course) {
+      var currentSession = Sessions.findOne({
+        course: course._id,
+        module: getCurrentModule(),
+        date: moment().format('DD-MM-YYYY')
+      })
+      if (currentSession) {
+        Courses.update(course._id, { $set: { currentSessionId: currentSession._id } });
+      } else {
+        Courses.update(course._id, { $unset: { currentSessionId: '' } });
+      }
+    });
   }
 });

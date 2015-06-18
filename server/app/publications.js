@@ -13,7 +13,7 @@ Meteor.publishComposite('app.course', function(courseId) {
   return {
     find: function() {
       if (!Roles.userHasPermission(this.userId, 'app.subscribe')) {
-        return [];
+        return;
       }
       return Courses.find({ _id: courseId });
     },
@@ -24,12 +24,13 @@ Meteor.publishComposite('app.course', function(courseId) {
       }
     }, {
       find: function(course) {
-        return Sessions.find({
-          course: course._id,
-          module: getCurrentModule(),
-          date: moment().format('DD-MM-YYYY')
-        })
-      }
+        return Sessions.find({ _id: course.currentSessionId });
+      },
+      children: [{
+        find: function(session) {
+          return Checks.find({ session: session._id });
+        }
+      }]
     }]
   }
 })

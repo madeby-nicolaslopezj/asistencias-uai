@@ -6,8 +6,30 @@ Sessions.attachSchema(new SimpleSchema({
     titleField: 'name',
     publicationName: 'asdfasdfasasdffdf',
   }),
+  courseName: {
+    type: String,
+    optional: true,
+    autoform: {
+      omit: true
+    },
+    autoValue: function() {
+      var courseId = this.field('course').value;
+      var course = courseId && Courses.findOne(courseId);
+      if (course) {
+        return course.name
+      }
+      return '';
+    }
+  },
   module: {
     type: Number,
+    autoValue: function() {
+      if (this.isInsert) {
+        return getCurrentModule()
+      } else if (this.isUpsert) {
+        return { $setOnInsert: getCurrentModule() };
+      }
+    }
   },
   date: {
     type: String,
@@ -19,14 +41,6 @@ Sessions.attachSchema(new SimpleSchema({
       }
     },
   },
-  students: orion.attribute('hasMany', {
-    label: 'Students that went',
-    optional: true
-  }, {
-    collection: Students,
-    titleField: 'name',
-    publicationName: 'asdfasasddfasdf',
-  }),
   createdBy: orion.attribute('createdBy')
 }));
 

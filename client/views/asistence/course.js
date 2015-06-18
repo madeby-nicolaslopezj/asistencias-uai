@@ -4,6 +4,7 @@ Template.collectionsCoursesAsistance.onRendered(function() {
     if (error) {
       console.log(error);
     } else {
+      console.log(result);
       Session.set('asistanceResult', result);
     }
   });

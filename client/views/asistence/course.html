@@ -1,8 +1,8 @@
 <template name="collectionsCoursesAsistance">
+  {{# Layout template="orionMaterializeHeaderContainer" }}
+    Asistencia
+  {{/ Layout }}
   {{# Layout template="orionMaterializeContentContainer" }}
-    {{# Layout template="orionMaterializeHeaderContainer" }}
-      Asistencia
-    {{/ Layout }}
     {{# if result }}
       <p><b>{{ result.course.abbreviation }}</b></p>
       <p>{{ result.course.name }}</p>

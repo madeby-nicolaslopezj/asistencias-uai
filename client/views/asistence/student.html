@@ -1,8 +1,9 @@
 <template name="collectionsStudentsAsistance">
+  {{# Layout template="orionMaterializeHeaderContainer" }}
+    Asistencia
+  {{/ Layout }}
   {{# Layout template="orionMaterializeContentContainer" }}
-    {{# Layout template="orionMaterializeHeaderContainer" }}
-      Asistencia
-    {{/ Layout }}
+    
     {{# with student }}
       <p><b>{{ name }}</b></p>
       <p>{{ rut }}-{{ digit }}</p>

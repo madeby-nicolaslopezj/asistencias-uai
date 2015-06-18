@@ -35,6 +35,13 @@ Courses.attachSchema(new SimpleSchema({
   hidden: {
     type: Boolean,
     optional: true
+  },
+  currentSessionId: {
+    type: String,
+    optional: true,
+    autoform: {
+      omit: true
+    }
   }
 }));
 
