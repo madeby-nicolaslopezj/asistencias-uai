@@ -19,7 +19,7 @@ Meteor.publishComposite('app.course', function(courseId) {
     },
     children: [{
       find: function(course) {
-        var ids = course.students;
+        var ids = course.students || [];
         return Students.find({ _id: { $in: ids } });
       }
     }, {
