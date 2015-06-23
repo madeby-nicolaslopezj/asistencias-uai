@@ -53,7 +53,7 @@ momentjs:moment@2.10.3
 mongo@1.1.0
 nicolaslopezj:options@1.0.1
 nicolaslopezj:reactive-templates@1.2.1
-nicolaslopezj:roles@1.1.0
+nicolaslopezj:roles@1.1.1
 nicolaslopezj:tabular-materialize@1.2.1
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
