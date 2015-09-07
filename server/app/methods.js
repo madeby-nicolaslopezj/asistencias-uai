@@ -38,11 +38,7 @@ Meteor.methods({
   },
   updateCurrentSessions: function() {
     Courses.find({ hidden: { $ne: true } }).forEach(function (course) {
-      var currentSession = Sessions.findOne({
-        course: course._id,
-        module: getCurrentModule(),
-        date: moment().format('DD-MM-YYYY')
-      })
+      var currentSession = course.getCurrentSession();
       if (currentSession) {
         Courses.update(course._id, { $set: { currentSessionId: currentSession._id } });
       } else {

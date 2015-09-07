@@ -18,18 +18,11 @@ Sessions.attachSchema(new SimpleSchema({
       if (course) {
         return course.name
       }
-      return '';
     }
   },
   module: {
     type: Number,
-    autoValue: function() {
-      if (this.isInsert) {
-        return getCurrentModule()
-      } else if (this.isUpsert) {
-        return { $setOnInsert: getCurrentModule() };
-      }
-    }
+    allowedValues: [1, 2, 3, 4, 5, 6, 7, 8]
   },
   date: {
     type: String,
@@ -41,15 +34,26 @@ Sessions.attachSchema(new SimpleSchema({
       }
     },
   },
+  isActive: {
+    type: Boolean,
+    autoValue: function() {
+      return !!this.value;
+    }
+  },
   createdBy: orion.attribute('createdBy')
 }));
 
 Sessions.deny({
   insert: function (userId, doc) {
     return Sessions.find({
-      date: doc.date,
-      module: doc.module,
-      course: doc.course
+      $or: [{
+        date: doc.date,
+        module: doc.module,
+        course: doc.course
+      }, {
+        course: doc.course,
+        isActive: true
+      }]
     }).count() != 0;
   }
 });

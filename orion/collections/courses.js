@@ -47,6 +47,6 @@ Courses.attachSchema(new SimpleSchema({
 
 Courses.helpers({
   getCurrentSession: function() {
-    return Sessions.findOne({ course: this._id, date: moment().format("DD-MM-YYYY"), module: getCurrentModule() });
+    return Sessions.findOne({ course: this._id, isActive: true });
   }
 });

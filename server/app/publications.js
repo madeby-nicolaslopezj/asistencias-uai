@@ -1,5 +1,4 @@
 Meteor.publish('app.courses', function() {
-  Meteor._sleepForMs(700)
   if (!Roles.userHasPermission(this.userId, 'app.subscribe')) {
     return [];
   }
@@ -8,7 +7,6 @@ Meteor.publish('app.courses', function() {
 });
 
 Meteor.publishComposite('app.course', function(courseId) {
-  Meteor._sleepForMs(700)
   check(courseId, String);
   return {
     find: function() {
@@ -24,7 +22,7 @@ Meteor.publishComposite('app.course', function(courseId) {
       }
     }, {
       find: function(course) {
-        return Sessions.find({ _id: course.currentSessionId });
+        return Sessions.find({ course: course._id, date: moment().format("DD-MM-YYYY") });
       },
       children: [{
         find: function(session) {
