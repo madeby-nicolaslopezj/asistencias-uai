@@ -4,8 +4,9 @@ Router.route('/admin/upload', function () {
 }, { name: 'upload' });
 
 if (Meteor.isClient) {
-  orion.addLink({
-    section: 'top',
+  orion.links.add({
+    identifier: 'upload',
+    index: 1,
     title: 'Upload Data',
     routeName: 'upload',
     activeRouteRegex: 'upload',

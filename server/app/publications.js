@@ -30,5 +30,5 @@ Meteor.publishComposite('app.course', function(courseId) {
         }
       }]
     }]
-  }
-})
+  };
+});
