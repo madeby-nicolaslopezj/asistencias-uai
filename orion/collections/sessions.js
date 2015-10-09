@@ -16,7 +16,7 @@ Sessions.attachSchema(new SimpleSchema({
       var courseId = this.field('course').value;
       var course = courseId && Courses.findOne(courseId);
       if (course) {
-        return course.name
+        return course.name;
       }
     }
   },
@@ -45,6 +45,16 @@ Sessions.attachSchema(new SimpleSchema({
 
 Sessions.deny({
   insert: function (userId, doc) {
+    console.log(Sessions.find({
+      $or: [{
+        date: doc.date,
+        module: doc.module,
+        course: doc.course
+      }, {
+        course: doc.course,
+        isActive: true
+      }]
+    }).count() != 0, 'deny deny');
     return Sessions.find({
       $or: [{
         date: doc.date,
