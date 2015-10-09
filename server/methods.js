@@ -1,4 +1,7 @@
 Meteor.methods({
+  asdf: function() {
+    return Sessions.update({ isActive: true, date: { $ne: moment().format('DD-MM-YYYY') } }, { $set: { isActive: false } }, { multi: true });
+  },
   getAsistance: function(studentId) {
     check(studentId, String);
     if (!Roles.userHasPermission(this.userId, 'collections.students.update')) {

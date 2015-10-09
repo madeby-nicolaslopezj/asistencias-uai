@@ -45,7 +45,18 @@ Sessions.attachSchema(new SimpleSchema({
 
 Sessions.deny({
   insert: function (userId, doc) {
-    Sessions.update({ isActive: true, date: { $lte: moment().startOf('day').toDate() } }, { $set: { isActive: false } }, { multi: true });
+    Sessions.update({ isActive: true, date: { $ne: moment().format('DD-MM-YYYY') } }, { $set: { isActive: false } }, { multi: true });
+    console.log(Sessions.find({
+      $or: [{
+        date: doc.date,
+        module: doc.module,
+        course: doc.course
+      }, {
+        course: doc.course,
+        isActive: true,
+        date: { $ne: moment().format('DD-MM-YYYY') }
+      }]
+    }).count() !== 0, 'deny deny!');
     return Sessions.find({
       $or: [{
         date: doc.date,
@@ -53,7 +64,8 @@ Sessions.deny({
         course: doc.course
       }, {
         course: doc.course,
-        isActive: true
+        isActive: true,
+        date: { $ne: moment().format('DD-MM-YYYY') }
       }]
     }).count() !== 0;
   }
